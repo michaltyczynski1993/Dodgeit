@@ -460,7 +460,7 @@ GameObject:
   - component: {fileID: 1792625749}
   - component: {fileID: 1792625748}
   m_Layer: 0
-  m_Name: Spawn
+  m_Name: Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -479,6 +479,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 6937359609927587628, guid: bc5d51b54d30d894b96b71cf48d8de29, type: 3}
+  spawnFrequency: 2
+  posX: 0
+  posYList:
+  - -6
+  - 6
 --- !u!4 &1792625749
 Transform:
   m_ObjectHideFlags: 0
