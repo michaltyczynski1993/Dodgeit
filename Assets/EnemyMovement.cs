@@ -12,12 +12,13 @@ public class EnemyMovement : MonoBehaviour
 
     private void Awake()
     {
-        horizontalMovent = Random.Range(-1, 1);
-        verticalMovent = Random.Range(-1, 1);
+        // horizontalMovent = Random.Range(-1, 1);
     }
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        setYmove();
+        setXmove();
     }
 
     // Update is called once per frame
@@ -26,9 +27,38 @@ public class EnemyMovement : MonoBehaviour
         EnemyMove();
     }
 
+    private void setYmove()
+    {
+        if (gameObject.transform.position.y < 0)
+        {
+            verticalMovent = 1;
+        }
+        else
+        {
+            verticalMovent = -1;
+        }
+    }
+
+    private void setXmove()
+    {
+        if (gameObject.transform.position.x > 6.5)
+        {
+            horizontalMovent = Random.Range(0, 2);
+        }
+        else
+        {
+            horizontalMovent = Random.Range(-1, 1);
+        }
+    }
+
     private void EnemyMove()
     {
         rb2d.velocity = new Vector2(horizontalMovent * speed, verticalMovent * speed);
+    }
+
+    void OnBecameInvisible()
+    {
+        Destroy(gameObject);
     }
 
 }
