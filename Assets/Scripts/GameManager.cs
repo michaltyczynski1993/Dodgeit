@@ -5,16 +5,37 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     // variables
-    private static GameManager instance;
-    public static GameManager Instance;
+    public static GameManager instance;
+
+    public bool isGameOver = false;
+
+    // enemy speed and spawn time
+    public float enemySpeed = 2f;
+    public float enemySpawnTime = 4f;
+    public float moonSpawnTime = 5f;
+    private int score;
 
     private void Awake()
     {
-        instance = this;
-
+        //If we don't currently have a game control...
         if (instance == null)
-        {
-            Debug.Log("Game Manager is null!!!");
-        }
+            //...set this one to be it...
+            instance = this;
+        //...otherwise...
+        else if (instance != this)
+            //...destroy this one because it is a duplicate.
+            Destroy(gameObject);
     }
+
+    private void Start()
+    {
+        score = 0;
+    }
+
+    public void IncreaseScore()
+    {
+        score++;
+        Debug.Log(score);
+    }
+
 }

@@ -15,7 +15,12 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MovePlayer();
+        if (!GameManager.instance.isGameOver)
+        {
+            MovePlayer();
+        }
+        else { rb2d.velocity = new Vector2(0, 0); }
+
     }
 
     private void MovePlayer()

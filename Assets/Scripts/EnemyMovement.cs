@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     private Rigidbody2D rb2d;
-    private float speed = 2;
+    private float speed;
     private float horizontalMovent;
     private float verticalMovent;
     // Start is called before the first frame update
@@ -16,6 +16,7 @@ public class EnemyMovement : MonoBehaviour
     }
     void Start()
     {
+        speed = GameManager.instance.enemySpeed;
         rb2d = GetComponent<Rigidbody2D>();
         setYmove();
         setXmove();

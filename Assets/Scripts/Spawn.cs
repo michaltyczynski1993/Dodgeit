@@ -6,7 +6,8 @@ public class Spawn : MonoBehaviour
 {
     public GameObject enemy;
     public GameObject moon;
-    [SerializeField] private float spawnFrequency = 4f;
+    private float enemySpawnFrequency;
+    private float moonSpawnFrequency;
     private bool isSpawning = true;
     // pos x must me between -8 : 8.2
     private float posX;
@@ -16,18 +17,42 @@ public class Spawn : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(SpawnInTimePeriod(spawnFrequency));
+        enemySpawnFrequency = GameManager.instance.enemySpawnTime;
+        moonSpawnFrequency = GameManager.instance.moonSpawnTime;
+        StartCoroutine(SpawnEnemyTimePeriod(enemySpawnFrequency));
+        StartCoroutine(SpawnMoonTimePeriod(moonSpawnFrequency));
     }
-    IEnumerator SpawnInTimePeriod(float timeToSpawn)
+    IEnumerator SpawnEnemyTimePeriod(float timeToSpawn)
     {
         while (isSpawning == true)
         {
             yield return new WaitForSeconds(timeToSpawn);
             SpawnEnemy();
+            if (GameManager.instance.isGameOver)
+            {
+                isSpawning = false;
+                StopAllCoroutines();
+            }
+        }
+
+
+    }
+
+    IEnumerator SpawnMoonTimePeriod(float timeToSpawn)
+    {
+        while (isSpawning == true)
+        {
+            yield return new WaitForSeconds(timeToSpawn);
             SpawnMoon();
+            if (GameManager.instance.isGameOver)
+            {
+                isSpawning = false;
+                StopAllCoroutines();
+            }
         }
 
     }
+
 
     private void SpawnEnemy()
     {
