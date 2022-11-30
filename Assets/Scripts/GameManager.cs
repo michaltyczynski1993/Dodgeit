@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     // variables
     public static GameManager instance;
+    public Text scoreText;
 
     public bool isGameOver = false;
 
@@ -33,7 +35,7 @@ public class GameManager : MonoBehaviour
     public void IncreaseScore()
     {
         score++;
-        Debug.Log(score);
+        scoreText.text = "Score " + score;
     }
 
 }
