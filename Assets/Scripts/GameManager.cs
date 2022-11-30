@@ -11,9 +11,7 @@ public class GameManager : MonoBehaviour
 
     // enemy speed and spawn time
     public float enemySpeed = 2f;
-    public float enemySpawnTime = 4f;
-    public float moonSpawnTime = 5f;
-    private int score;
+    public int score;
 
     private void Awake()
     {

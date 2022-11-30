@@ -17,16 +17,16 @@ public class Spawn : MonoBehaviour
 
     void Start()
     {
-        enemySpawnFrequency = GameManager.instance.enemySpawnTime;
-        moonSpawnFrequency = GameManager.instance.moonSpawnTime;
-        StartCoroutine(SpawnEnemyTimePeriod(enemySpawnFrequency));
+        enemySpawnFrequency = 4f;
+        moonSpawnFrequency = 5f;
+        StartCoroutine("SpawnEnemyTimePeriod");
         StartCoroutine(SpawnMoonTimePeriod(moonSpawnFrequency));
     }
-    IEnumerator SpawnEnemyTimePeriod(float timeToSpawn)
+    IEnumerator SpawnEnemyTimePeriod()
     {
         while (isSpawning == true)
         {
-            yield return new WaitForSeconds(timeToSpawn);
+            yield return new WaitForSeconds(enemySpawnFrequency);
             SpawnEnemy();
             if (GameManager.instance.isGameOver)
             {
@@ -69,5 +69,18 @@ public class Spawn : MonoBehaviour
         moonPosY = Random.Range(-4.32f, 4.34f);
         Vector2 moonSpawnPosition = new Vector2(posX, moonPosY);
         Instantiate(moon, moonSpawnPosition, Quaternion.identity);
+    }
+
+    public void increaseEnemySpawn()
+    {
+        if (enemySpawnFrequency > 1)
+        {
+            enemySpawnFrequency--;
+            Debug.Log(enemySpawnFrequency);
+        }
+        else
+        {
+            enemySpawnFrequency = 0.5f;
+        }
     }
 }
