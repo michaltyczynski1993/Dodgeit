@@ -43,4 +43,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void GameOver()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        GameObject[] moons = GameObject.FindGameObjectsWithTag("Moon");
+
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            Destroy(enemies[i]);
+        }
+        for (int i = 0; i < moons.Length; i++)
+        {
+            Destroy(moons[i]);
+        }
+        Destroy(player);
+    }
+
 }

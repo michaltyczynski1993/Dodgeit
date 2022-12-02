@@ -10,6 +10,7 @@ public class EnemyDestroy : MonoBehaviour
         {
             Destroy(other);
             GameManager.instance.isGameOver = true;
+            GameManager.instance.GameOver();
         }
     }
 }
