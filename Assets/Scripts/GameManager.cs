@@ -36,6 +36,11 @@ public class GameManager : MonoBehaviour
     {
         score++;
         scoreText.text = "Score " + score;
+        if (score >= 30 && score % 5 == 0)
+        {
+            enemySpeed++;
+            Debug.Log(enemySpeed);
+        }
     }
 
 }

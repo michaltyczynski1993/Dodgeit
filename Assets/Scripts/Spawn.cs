@@ -76,7 +76,6 @@ public class Spawn : MonoBehaviour
         if (enemySpawnFrequency > 1)
         {
             enemySpawnFrequency--;
-            Debug.Log(enemySpawnFrequency);
         }
         else
         {
