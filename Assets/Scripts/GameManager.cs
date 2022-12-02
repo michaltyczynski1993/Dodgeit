@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
     // variables
     public static GameManager instance;
     public Text scoreText;
+    public Text gameOverText;
+    public Text highScoreText;
+    private int highScore;
 
     public bool isGameOver = false;
 
@@ -30,6 +33,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         score = 0;
+        highScore = PlayerPrefs.GetInt("HighScore", 0);
     }
 
     public void IncreaseScore()
@@ -58,6 +62,21 @@ public class GameManager : MonoBehaviour
             Destroy(moons[i]);
         }
         Destroy(player);
+        gameOverText.gameObject.SetActive(true);
+        setHightScore();
+    }
+
+    private void setHightScore()
+    {
+        if (score > highScore)
+        {
+            PlayerPrefs.SetInt("HighScore", score);
+            highScoreText.text = "High Score: " + score.ToString();
+        }
+        else
+        {
+            highScoreText.text = "High Score: " + highScore.ToString();
+        }
     }
 
 }
