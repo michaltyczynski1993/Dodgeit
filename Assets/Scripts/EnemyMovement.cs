@@ -23,6 +23,11 @@ public class EnemyMovement : MonoBehaviour
     }
 
     // Update is called once per frame
+    private void Update()
+    {
+        transform.Rotate(new Vector3(0, 0, 20) * Time.deltaTime);
+    }
+
     private void FixedUpdate()
     {
         EnemyMove();
