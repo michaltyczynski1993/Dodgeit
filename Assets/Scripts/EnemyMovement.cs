@@ -8,6 +8,7 @@ public class EnemyMovement : MonoBehaviour
     private float speed;
     private float horizontalMovent;
     private float verticalMovent;
+    private float rotation;
     // Start is called before the first frame update
 
     private void Awake()
@@ -17,6 +18,7 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         speed = GameManager.instance.enemySpeed;
+        rotation = Random.Range(20, 70);
         rb2d = GetComponent<Rigidbody2D>();
         setYmove();
         setXmove();
@@ -25,7 +27,7 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        transform.Rotate(new Vector3(0, 0, 20) * Time.deltaTime);
+        transform.Rotate(new Vector3(0, 0, rotation) * Time.deltaTime);
     }
 
     private void FixedUpdate()
