@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -77,6 +78,25 @@ public class GameManager : MonoBehaviour
         {
             highScoreText.text = "High Score: " + highScore.ToString();
         }
+    }
+
+    // UI CONTROLLS
+    public void ResetGame()
+    {
+        if (isGameOver)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
+
+    public void PlayGame()
+    {
+        SceneManager.LoadScene("Game");
+    }
+
+    public void LoadMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 
 }
