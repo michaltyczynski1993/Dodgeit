@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb2d;
     public float playerSpeed;
-    float smooth = 6.0f;
+    float smooth = 35.0f;
     float tiltAngle = 90.0f;
     // Start is called before the first frame update
     void Start()
