@@ -8,10 +8,13 @@ public class PlayerMovement : MonoBehaviour
     public float playerSpeed;
     float smooth = 4.0f;
     float tiltAngle = 90.0f;
+    public AudioSource engine;
+    private bool isPlayerMove;
     // Start is called before the first frame update
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        isPlayerMove = false;
     }
 
     // Update is called once per frame
@@ -20,6 +23,18 @@ public class PlayerMovement : MonoBehaviour
         if (!GameManager.instance.isGameOver)
         {
             MovePlayer();
+            if (Input.GetButton("Vertical") || Input.GetButton("Horizontal"))
+            {
+                if (!engine.isPlaying)
+                {
+                    engine.Play();
+                }
+            }
+            else
+            {
+                // Always stop the audio if the player is not inputting movement.
+                engine.Stop();
+            }
         }
         else { rb2d.velocity = new Vector2(0, 0); }
 
@@ -36,17 +51,20 @@ public class PlayerMovement : MonoBehaviour
             case 1:
                 tiltAngle = -45f;
                 RotatePlayer(tiltAngle, smooth);
+                isPlayerMove = true;
                 break;
 
             case 0:
                 tiltAngle = 0f;
                 RotatePlayer(tiltAngle, smooth);
+                isPlayerMove = false;
                 break;
 
 
             case -1:
                 tiltAngle = 45f;
                 RotatePlayer(tiltAngle, smooth);
+                isPlayerMove = true;
                 break;
         }
     }
