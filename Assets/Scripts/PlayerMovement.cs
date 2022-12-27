@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb2d;
     public float playerSpeed;
-    float smooth = 35.0f;
+    float smooth = 4.0f;
     float tiltAngle = 90.0f;
     // Start is called before the first frame update
     void Start()
@@ -34,25 +34,18 @@ public class PlayerMovement : MonoBehaviour
         switch (horizontalInput)
         {
             case 1:
-                tiltAngle = -90f;
+                tiltAngle = -45f;
                 RotatePlayer(tiltAngle, smooth);
                 break;
+
+            case 0:
+                tiltAngle = 0f;
+                RotatePlayer(tiltAngle, smooth);
+                break;
+
 
             case -1:
-                tiltAngle = 90f;
-                RotatePlayer(tiltAngle, smooth);
-                break;
-        }
-
-        switch (verticalInput)
-        {
-            case 1:
-                tiltAngle = 0;
-                RotatePlayer(tiltAngle, smooth);
-                break;
-
-            case -1:
-                tiltAngle = 180;
+                tiltAngle = 45f;
                 RotatePlayer(tiltAngle, smooth);
                 break;
         }
