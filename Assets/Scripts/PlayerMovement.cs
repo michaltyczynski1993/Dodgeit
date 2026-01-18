@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
                 engine.Stop();
             }
         }
-        else { rb2d.velocity = new Vector2(0, 0); }
+        else { rb2d.linearVelocity = new Vector2(0, 0); }
 
     }
 
@@ -44,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
     {
         var horizontalInput = Input.GetAxisRaw("Horizontal");
         var verticalInput = Input.GetAxisRaw("Vertical");
-        rb2d.velocity = new Vector2(horizontalInput * playerSpeed, verticalInput * playerSpeed);
+        rb2d.linearVelocity = new Vector2(horizontalInput * playerSpeed, verticalInput * playerSpeed);
 
         switch (horizontalInput)
         {

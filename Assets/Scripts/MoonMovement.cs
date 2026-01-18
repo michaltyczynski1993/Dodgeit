@@ -56,7 +56,7 @@ public class MoonMovement : MonoBehaviour
 
     private void MoonMove()
     {
-        rb2d.velocity = new Vector2(horizontalMovent * speed, verticalMovent * speed);
+        rb2d.linearVelocity = new Vector2(horizontalMovent * speed, verticalMovent * speed);
     }
 
     void OnBecameInvisible()

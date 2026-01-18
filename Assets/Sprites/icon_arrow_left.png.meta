@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 4cb9a7d91636c2a40825d878736fd5d1
+guid: 70ef9d405d36e70459bf0dffce17600a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7033087912155933695
-    second: Flames_sheet_0
-  - first:
-      213: 11501102445261864
-    second: Flames_sheet_1
+      213: 1008923615742162585
+    second: icon_arrow_left_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -129,45 +126,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Flames_sheet_0
+      name: icon_arrow_left_0
       rect:
         serializedVersion: 2
-        x: 15
-        y: 12
-        width: 17
-        height: 38
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ffbe526713c8a9160800000000000000
-      internalID: 7033087912155933695
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Flames_sheet_1
-      rect:
-        serializedVersion: 2
-        x: 62
+        x: 0
         y: 0
-        width: 18
-        height: 50
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 82476c5113cd82000800000000000000
-      internalID: 11501102445261864
+      spriteID: 99670d9deaa600e00800000000000000
+      internalID: 1008923615742162585
       vertices: []
       indices: 
       edges: []
@@ -176,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -186,8 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Flames_sheet_0: 7033087912155933695
-      Flames_sheet_1: 11501102445261864
+      icon_arrow_left_0: 1008923615742162585
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
