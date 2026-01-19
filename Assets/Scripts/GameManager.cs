@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using GamePix;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class GameManager : MonoBehaviour
     // enemy speed and spawn time
     public float enemySpeed = 2f;
     public int score;
+    private bool isJoystickOn;
+    public GameObject onScreenJoystick;
 
     private void Awake()
     {
@@ -33,6 +36,11 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        isJoystickOn = PlayerPrefs.GetInt("VirtualJoystick") == 1;
+        if (!isJoystickOn)
+        {
+            onScreenJoystick.SetActive(false);
+        }
         score = 0;
         highScore = PlayerPrefs.GetInt("HighScore", 0);
     }
@@ -65,6 +73,12 @@ public class GameManager : MonoBehaviour
         Destroy(player);
         gameOverText.gameObject.SetActive(true);
         setHightScore();
+        Gpx.Ads.InterstitialAd(OnInterstitialCallback);
+    }
+
+    void OnInterstitialCallback()
+    {
+        Debug.Log("Adsvertisment displayed");
     }
 
     private void setHightScore()

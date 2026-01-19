@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     float tiltAngle = 90.0f;
     public AudioSource engine;
     private bool isPlayerMove;
+   private Vector2 movementInput;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,50 +25,40 @@ public class PlayerMovement : MonoBehaviour
         if (!GameManager.instance.isGameOver)
         {
             MovePlayer();
-            if (Input.GetButton("Vertical") || Input.GetButton("Horizontal"))
-            {
-                if (!engine.isPlaying)
-                {
-                    engine.Play();
-                }
-            }
-            else
-            {
-                // Always stop the audio if the player is not inputting movement.
-                engine.Stop();
-            }
         }
         else { rb2d.linearVelocity = new Vector2(0, 0); }
 
     }
 
-    private void MovePlayer()
+    public void OnMove(InputAction.CallbackContext context)
     {
-        var horizontalInput = Input.GetAxisRaw("Horizontal");
-        var verticalInput = Input.GetAxisRaw("Vertical");
-        rb2d.linearVelocity = new Vector2(horizontalInput * playerSpeed, verticalInput * playerSpeed);
+        movementInput = context.ReadValue<Vector2>();
+    }
 
-        switch (horizontalInput)
-        {
-            case 1:
-                tiltAngle = -45f;
-                RotatePlayer(tiltAngle, smooth);
-                isPlayerMove = true;
-                break;
+    private void MovePlayer()
+    {;
+        rb2d.linearVelocity = new Vector2(
+        movementInput.x * playerSpeed,
+        movementInput.y * playerSpeed
+    );
 
-            case 0:
-                tiltAngle = 0f;
-                RotatePlayer(tiltAngle, smooth);
-                isPlayerMove = false;
-                break;
+    if (movementInput.x > 0.1f)
+    {
+        tiltAngle = -45f;
+        isPlayerMove = true;
+    }
+    else if (movementInput.x < -0.1f)
+    {
+        tiltAngle = 45f;
+        isPlayerMove = true;
+    }
+    else
+    {
+        tiltAngle = 0f;
+        isPlayerMove = false;
+    }
 
-
-            case -1:
-                tiltAngle = 45f;
-                RotatePlayer(tiltAngle, smooth);
-                isPlayerMove = true;
-                break;
-        }
+    RotatePlayer(tiltAngle, smooth);
     }
     private void RotatePlayer(float rotAngle, float rotSpeed)
     {
